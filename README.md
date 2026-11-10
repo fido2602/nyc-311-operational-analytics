@@ -161,6 +161,7 @@ nyc-311-operational-analytics/
 │   ├── NYC_311_Executive_Summary.pdf
 │   ├── NYC_311_Key_Findings_and_Recommendations.pdf
 │   └── NYC_311_Project_Report.pdf
+    └── NYC_311_Service_Analytics.pdf
 └── screenshots/
     ├── 01_Executive_Overview.png
     ├── 02_Service_Demand.png
