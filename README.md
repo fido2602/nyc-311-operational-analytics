@@ -43,7 +43,7 @@ The project analyzes NYC 311 service requests for calendar year 2024, with appro
 
 Key analytical fields include request creation date, closure date, status, borough, agency, complaint type, and calculated resolution time.
 
-The raw dataset is not included in this repository because of its size. Users reproducing the analysis should obtain the corresponding 2024 NYC 311 source data and confirm that the source schema aligns with the SQL script and Power BI model. The repository will include the relevant data-preparation notes and analysis logic.
+The raw dataset is not included in this repository because of its size. Users reproducing the analysis should obtain the corresponding 2024 NYC 311 source data and confirm that the source schema aligns with the SQL script and Power BI model. The `dataset/` folder contains additional dataset information.
 
 ## Power BI Dashboard
 
@@ -58,8 +58,6 @@ The dashboard is organized into four pages:
 
 ### Dashboard Preview
 
-The following screenshots will be available in the `screenshots/` folder:
-
 | Executive Overview | Service Demand |
 |---|---|
 | ![Executive Overview](screenshots/01_Executive_Overview.png) | ![Service Demand](screenshots/02_Service_Demand.png) |
@@ -68,7 +66,7 @@ The following screenshots will be available in the `screenshots/` folder:
 |---|---|
 | ![Operational Efficiency](screenshots/03_Operational_Efficiency.png) | ![Data Quality](screenshots/04_Data_Quality.png) |
 
-A dashboard PDF and walkthrough video are planned for the `power-bi/` folder.
+The [Power BI dashboard PDF](power-bi/NYC_311_Service_Analytics.pdf) is available in this repository. The PBIX file and walkthrough video are not hosted here because they exceeded GitHub's file-size upload limit.
 
 ## Key Findings
 
@@ -92,7 +90,7 @@ A dashboard PDF and walkthrough video are planned for the `power-bi/` folder.
 | Non-Closed status requests | Approximately 39,000 |
 | Requests missing closure dates | Approximately 63,000 |
 
-Values are rounded for presentation. Refer to the final KPI Definition Register and validated SQL outputs for the authoritative definitions and exact figures.
+Values are rounded for presentation. Refer to the [KPI Definition Register](business-requirements/NYC_311_KPI_Definition_Register.xlsx) and validated SQL outputs for the authoritative definitions and exact figures.
 
 ## Data Quality Findings
 
@@ -113,6 +111,22 @@ These records should be investigated rather than automatically corrected. A miss
 5. **Strengthen status/date validation.** Establish checks for Closed requests without closure dates and non-Closed requests with closure dates.
 6. **Track average and median resolution time.** Use both measures and investigate unusually long-running requests.
 
+## Project Documentation and Deliverables
+
+- [Business Requirements Document](business-requirements/NYC_311_Business_Requirements_Document.docx)
+- [KPI Definition Register](business-requirements/NYC_311_KPI_Definition_Register.xlsx)
+- [SQL Analysis Script](sql/NYC_311_2024_Operational_Analytics.sql)
+- [SQL Analysis Notes](sql/SQL_Analysis_Notes.docx)
+- [Data Cleaning Notes](documentation/Data_Cleaning_Notes.docx)
+- [Data Dictionary](documentation/Data_Dictionary.docx)
+- [Project Documentation](documentation/NYC_311_Project_Documentation.docx)
+- [Executive Summary (Word)](documentation/NYC_311_Executive_Summary.docx)
+- [Key Findings and Recommendations (Word)](documentation/NYC_311_Key_Findings_and_Recommendations.docx)
+- [Executive Summary (PDF)](deliverables/NYC_311_Executive_Summary.pdf)
+- [Key Findings and Recommendations (PDF)](deliverables/NYC_311_Key_Findings_and_Recommendations.pdf)
+- [Project Report (PDF)](deliverables/NYC_311_Project_Report.pdf)
+- [Power BI Dashboard (PDF)](power-bi/NYC_311_Service_Analytics.pdf)
+
 ## Limitations
 
 - This is a descriptive analysis. It identifies patterns but does not establish the causes of resolution delays or differences between agencies and boroughs.
@@ -123,24 +137,30 @@ These records should be investigated rather than automatically corrected. A miss
 
 ## Repository Structure
 
-The repository will be organized as follows as reviewed project files are added:
-
 ```text
 nyc-311-operational-analytics/
 ├── README.md
+├── business-requirements/
+│   ├── NYC_311_Business_Requirements_Document.docx
+│   └── NYC_311_KPI_Definition_Register.xlsx
+├── dataset/
+│   └── README.md
 ├── sql/
-│   └── NYC_311_2024_Operational_Analytics.sql
+│   ├── NYC_311_2024_Operational_Analytics.sql
+│   └── SQL_Analysis_Notes.docx
+├── power-bi/
+│   ├── NYC_311_Service_Analytics.pdf
+│   └── README.md
 ├── documentation/
-│   ├── NYC_311_Project_Report.pdf
+│   ├── Data_Cleaning_Notes.docx
+│   ├── Data_Dictionary.docx
+│   ├── NYC_311_Executive_Summary.docx
+│   ├── NYC_311_Key_Findings_and_Recommendations.docx
+│   └── NYC_311_Project_Documentation.docx
+├── deliverables/
 │   ├── NYC_311_Executive_Summary.pdf
 │   ├── NYC_311_Key_Findings_and_Recommendations.pdf
-│   ├── SQL_Analysis_Notes.docx
-│   ├── Data_Dictionary.docx
-│   └── Data_Cleaning_Notes.docx
-├── power-bi/
-│   ├── NYC_311_Service_Analytics.pbix
-│   ├── NYC_311_Service_Analytics.pdf
-│   └── NYC_311_Service_Analytics.mp4
+│   └── NYC_311_Project_Report.pdf
 └── screenshots/
     ├── 01_Executive_Overview.png
     ├── 02_Service_Demand.png
@@ -148,7 +168,7 @@ nyc-311-operational-analytics/
     └── 04_Data_Quality.png
 ```
 
-The raw and intermediate CSV files are intentionally excluded. Large binary deliverables may be linked externally if they exceed GitHub's file-size limits.
+The raw and intermediate CSV files are intentionally excluded. The PBIX dashboard file and walkthrough video are retained separately because they exceeded GitHub's file-size upload limit.
 
 ## Conclusion
 
