@@ -1,16 +1,25 @@
 # NYC 311 Operational Analytics
 
-An end-to-end analytics project exploring 2024 NYC 311 service requests using SQL and Microsoft Power BI. The project examines service demand, geographic and seasonal patterns, agency workload, resolution performance, and data quality.
+An end-to-end business analytics project examining **2024 New York City 311 service requests** using MySQL and Microsoft Power BI. The project explores service demand, geographic and seasonal patterns, agency workload, resolution performance, and data quality, then translates the findings into operational recommendations.
 
-## Project Overview
+> **Project focus:** Service Demand · Operational Efficiency · Data Quality
 
-NYC 311 provides a channel for residents to report service needs and local issues. This project analyzes 2024 service-request records to turn a large operational dataset into clear, decision-oriented insights.
+## Project at a Glance
 
-The analysis is organized around three business questions:
+| Item | Details |
+|---|---|
+| Analysis period | January 1 – December 31, 2024 |
+| Dataset size | Approximately 3.46 million service requests |
+| SQL environment | MySQL |
+| Visualization | Microsoft Power BI |
+| Dashboard pages | 4 |
+| Core areas | Demand analysis, operational performance, data quality |
+
+## Business Questions
 
 1. **Service demand:** Where and when are residents requesting the most services?
-2. **Operational efficiency:** How do workload and resolution times vary by agency, borough, and complaint type?
-3. **Data reliability:** Are request status and closure-date fields complete and consistent enough to support reliable reporting?
+2. **Operational efficiency:** How do agency workload and resolution times vary by borough, agency, and complaint type?
+3. **Data reliability:** Are request status and closure-date fields sufficiently complete and consistent for operational reporting?
 
 ## Project Objectives
 
@@ -19,99 +28,127 @@ The analysis is organized around three business questions:
 - Examine seasonal patterns, including Heat & Hot Water requests.
 - Compare agency workload and average resolution time.
 - Assess closure-date completeness and status/date consistency.
-- Present findings and practical recommendations in an interactive Power BI dashboard.
+- Build an interactive Power BI dashboard and communicate actionable findings.
 
 ## Tools and Technologies
 
-- **SQL / MySQL** — data validation, aggregation, and analytical queries.
-- **Microsoft Power BI** — data modeling, DAX measures, interactive visuals, and dashboard reporting.
-- **Microsoft Excel** — supporting data review and project documentation.
+- **MySQL / SQL:** Data validation, data-quality checks, aggregations, and analytical queries.
+- **Microsoft Power BI:** Data modeling, DAX measures, interactive visuals, and dashboard reporting.
+- **Power Query:** Data preparation and transformation within the reporting workflow.
+- **Excel:** Supporting data review and KPI documentation.
 
 ## Dataset
 
-- **Analysis period:** January–December 2024.
-- **Scope:** NYC 311 service-request records.
-- **Analyzed volume:** approximately 3.46 million records.
-- **Key analytical fields:** request creation date, closure date, status, borough, agency, complaint type, and calculated resolution time.
+The project analyzes NYC 311 service requests for calendar year 2024, with approximately **3.46 million records** in the analyzed dataset.
 
-The raw dataset is not included in this repository at this stage. Before reproducing the analysis, obtain the corresponding 2024 NYC 311 source data and confirm that its schema matches the SQL scripts and Power BI model.
+Key analytical fields include request creation date, closure date, status, borough, agency, complaint type, and calculated resolution time.
+
+The raw dataset is not included in this repository because of its size. Users reproducing the analysis should obtain the corresponding 2024 NYC 311 source data and confirm that the source schema aligns with the SQL script and Power BI model. The repository will include the relevant data-preparation notes and analysis logic.
 
 ## Power BI Dashboard
 
-The dashboard contains four analytical pages:
+The dashboard is organized into four pages:
 
-| Page | Focus | Main questions |
+| Page | Analysis | Purpose |
 |---|---|---|
-| 1. Executive Overview | Overall KPIs and service-request trends | What is the overall service-request and closure picture? |
-| 2. Service Demand Analysis | Monthly, borough, complaint-type, and seasonal patterns | Where and when is demand highest? |
-| 3. Operational Efficiency | Agency workload and resolution performance | How do workload and resolution times vary? |
-| 4. Data Quality & Business Insights | Missing closure dates and status/date inconsistencies | What data-quality issues could affect reporting? |
+| 1. Executive Overview | Overall KPIs, monthly volume, borough volume, top complaint categories, and status distribution | Understand the overall service-request picture |
+| 2. Service Demand Analysis | Monthly demand by borough, complaint-type filters, Heat & Hot Water trends, and seasonal comparisons | Identify geographic and seasonal demand patterns |
+| 3. Operational Efficiency | Agency workload, average resolution time by agency and borough, and HPD complaint-type resolution | Compare workload and resolution performance |
+| 4. Data Quality & Business Insights | Missing closure dates, status/date inconsistencies, and valid resolution records | Assess data reliability and reporting limitations |
+
+### Dashboard Preview
+
+The following screenshots will be available in the `screenshots/` folder:
+
+| Executive Overview | Service Demand |
+|---|---|
+| ![Executive Overview](screenshots/01_Executive_Overview.png) | ![Service Demand](screenshots/02_Service_Demand.png) |
+
+| Operational Efficiency | Data Quality |
+|---|---|
+| ![Operational Efficiency](screenshots/03_Operational_Efficiency.png) | ![Data Quality](screenshots/04_Data_Quality.png) |
+
+A dashboard PDF and walkthrough video are planned for the `power-bi/` folder.
 
 ## Key Findings
 
 - **Borough demand:** Brooklyn recorded the highest service-request volume; Staten Island recorded the lowest.
 - **Seasonality:** Heat & Hot Water requests increased during winter.
-- **Agency workload:** NYPD had the highest request workload among the agencies analyzed.
-- **Agency resolution time:** The Department of Parks and Recreation (DPR) had the longest average agency resolution time.
-- **Borough resolution time:** Staten Island had the longest average resolution time by borough.
-- **HPD complaint type:** Unsanitary Condition had the longest average resolution time in the HPD complaint-type analysis.
-- **Data quality:** The analysis identified requests marked Closed without closure dates, as well as non-Closed requests that contained closure dates.
-- **Resolution-time distribution:** Average resolution time was 13.75 days, compared with a median of 0.34 days, indicating a highly uneven distribution and the importance of reviewing both measures.
+- **Agency workload:** NYPD recorded the highest request workload among the agencies analyzed.
+- **Agency resolution time:** The Department of Parks and Recreation (DPR) recorded the longest average agency resolution time.
+- **Borough resolution time:** Staten Island recorded the longest average resolution time by borough.
+- **HPD complaint type:** Unsanitary Condition recorded the longest average resolution time in the HPD complaint-type analysis.
+- **Data quality:** The analysis identified Closed requests without closure dates and non-Closed requests with populated closure dates.
+- **Resolution-time distribution:** Average resolution time was **13.75 days**, compared with a median of **0.34 days**. The difference indicates an uneven distribution and supports reviewing both measures.
+
+## Selected KPIs
+
+| KPI | Project result |
+|---|---:|
+| Total service requests | Approximately 3.46 million |
+| Closure rate | 98.88% |
+| Average resolution time | 13.75 days |
+| Median resolution time | 0.34 days |
+| Non-Closed status requests | Approximately 39,000 |
+| Requests missing closure dates | Approximately 63,000 |
+
+Values are rounded for presentation. Refer to the final KPI Definition Register and validated SQL outputs for the authoritative definitions and exact figures.
+
+## Data Quality Findings
+
+The dashboard highlights these approximate counts:
+
+- **63,000** requests with missing closure dates.
+- **27,600** requests marked Closed with missing closure dates.
+- **3,000** requests with a non-Closed status but a populated closure date.
+
+These records should be investigated rather than automatically corrected. A missing closure date does not by itself prove that a request remains unresolved, and a populated closure date paired with a non-Closed status may reflect a source-system or status-definition issue.
 
 ## Business Recommendations
 
-1. **Plan resources using borough-level demand.** Consider request volume alongside population, agency capacity, and case complexity rather than relying on citywide totals alone.
+1. **Use borough-level demand for resource planning.** Review request volume alongside population, agency capacity, and case complexity.
 2. **Prepare for seasonal demand.** Use historical winter Heat & Hot Water patterns to support advance staffing and operational planning.
-3. **Investigate longer resolution times.** Review long-running cases and potential workflow constraints, while accounting for differences in complaint complexity.
-4. **Monitor workload and outcomes together.** Agency request volume should be evaluated alongside resolution-time distributions and service mix.
+3. **Investigate longer resolution times.** Review long-running cases and possible workflow constraints while accounting for differences in complaint complexity.
+4. **Monitor workload and outcomes together.** Evaluate agency request volume alongside resolution-time distributions and service mix.
 5. **Strengthen status/date validation.** Establish checks for Closed requests without closure dates and non-Closed requests with closure dates.
 6. **Track average and median resolution time.** Use both measures and investigate unusually long-running requests.
 
-## Data Quality Considerations
-
-The dashboard highlights the following approximate counts from the project analysis:
-
-- Approximately **63,000** requests with missing closure dates.
-- Approximately **27,600** requests marked Closed with missing closure dates.
-- Approximately **3,000** requests with a non-Closed status but a populated closure date.
-
-These conditions should be investigated rather than automatically corrected. A missing closure date does not by itself prove that a request remains unresolved, and a populated closure date paired with a non-Closed status may reflect a source-system or status-definition issue.
-
 ## Limitations
 
-- This is a descriptive analysis; it identifies patterns but does not establish the causes of resolution delays or differences between agencies and boroughs.
+- This is a descriptive analysis. It identifies patterns but does not establish the causes of resolution delays or differences between agencies and boroughs.
 - Request volume alone is not a measure of service quality or staffing adequacy.
 - Resolution times can vary with complaint complexity, operational requirements, and data completeness.
 - Average resolution time can be influenced by unusually long-running records; the median provides a complementary view.
-- Rounded KPI values in this README should be reconciled with the final KPI register and validated SQL outputs before publication.
+- Rounded KPI values should be reconciled with the final KPI register and validated SQL outputs before being treated as exact.
 
-## Repository Contents
+## Repository Structure
 
-The repository will contain the project README, SQL analysis files, supporting documentation, and selected Power BI deliverables and screenshots as they are added and checked.
-
-Suggested organization:
+The repository will be organized as follows as reviewed project files are added:
 
 ```text
 nyc-311-operational-analytics/
 ├── README.md
 ├── sql/
-│   ├── data-validation/
-│   ├── data-quality/
-│   ├── service-demand/
-│   └── operational-performance/
+│   └── NYC_311_2024_Operational_Analytics.sql
 ├── documentation/
-│   ├── data-dictionary/
-│   ├── data-cleaning-notes/
-│   ├── sql-analysis-notes/
-│   ├── project-report/
-│   └── key-findings-and-recommendations/
+│   ├── NYC_311_Project_Report.pdf
+│   ├── NYC_311_Executive_Summary.pdf
+│   ├── NYC_311_Key_Findings_and_Recommendations.pdf
+│   ├── SQL_Analysis_Notes.docx
+│   ├── Data_Dictionary.docx
+│   └── Data_Cleaning_Notes.docx
 ├── power-bi/
-│   ├── dashboard/
-│   └── demo/
+│   ├── NYC_311_Service_Analytics.pbix
+│   ├── NYC_311_Service_Analytics.pdf
+│   └── NYC_311_Service_Analytics.mp4
 └── screenshots/
+    ├── 01_Executive_Overview.png
+    ├── 02_Service_Demand.png
+    ├── 03_Operational_Efficiency.png
+    └── 04_Data_Quality.png
 ```
 
-The folder names above describe the recommended GitHub layout; repository files should be added only after they have been reviewed and prepared for public sharing.
+The raw and intermediate CSV files are intentionally excluded. Large binary deliverables may be linked externally if they exceed GitHub's file-size limits.
 
 ## Conclusion
 
